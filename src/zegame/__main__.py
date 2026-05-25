@@ -1,3 +1,6 @@
+import argparse
+import sys
+
 from os import environ
 from types import SimpleNamespace
 
@@ -17,6 +20,10 @@ from zegame.utils import load_spritesheet
 def main():
     if environ.get('XDG_SESSION_TYPE', '') == 'wayland':
         environ['SDL_VIDEODRIVER'] = 'wayland'
+
+    cmdline = argparse.ArgumentParser(description=C.TITLE)
+    cmdline.add_argument('-g', '--game', action='store_true', help='Launch directly into the game')
+    opts = cmdline.parse_args(sys.argv[1:])
 
     pygame.init()
 
@@ -50,7 +57,7 @@ def main():
     sm.add(states.highscores, states.title, states.game)
     sm.add(states.game, states.highscores)
 
-    walker = sm.walker(states.selfcheck)
+    walker = sm.walker(states.game) if opts.game else sm.walker(states.selfcheck)
     app.run(walker)
 
 
