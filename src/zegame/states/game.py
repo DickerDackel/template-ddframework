@@ -31,10 +31,6 @@ class Game(GameState):
     def __init__(self, app):
         self.app = app
 
-        label = C.FONTS.giant.render('Game', False, C.COLORS.default)
-        self.texture = sdl2.Texture.from_surface(self.app.renderer, label)
-        self.rect = label.get_rect(center=C.SCREEN.center)
-
     def reset(self, *args, **kwargs):
         self.cooldown = Cooldown(15)
 
@@ -72,5 +68,4 @@ class Game(GameState):
          Phases.LINGER: self.update_linger}[self.state](dt)
 
     def draw(self):
-        self.texture.draw(dstrect=self.rect)
         ecs.run_system(0, sys_draw_sprite, Comp.SPRITE, Comp.PRSA)
