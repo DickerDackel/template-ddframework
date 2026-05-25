@@ -1,0 +1,21 @@
+{
+    "player-white":      [ 0,  0, 16, 16],
+    "player-yellow":     [16,  0, 16, 16],
+    "player-lightblue":  [32,  0, 16, 16],
+    "player-lightgreen": [48,  0, 16, 16],
+    "player-pink":       [64,  0, 16, 16],
+    "player-red":        [16, 16, 16, 16],
+    "player-green":      [32, 16, 16, 16],
+    "player-blue":       [48, 16, 16, 16],
+    "player-purple":     [64, 16, 16, 16],
+
+    "bullet-white":      [ 0, 32, 16, 16],
+    "bullet-yellow":     [16, 32, 16, 16],
+    "bullet-lightblue":  [32, 32, 16, 16],
+    "bullet-lightgreen": [48, 32, 16, 16],
+    "bullet-pink":       [64, 32, 16, 16],
+    "bullet-red":        [16, 48, 16, 16],
+    "bullet-green":      [32, 48, 16, 16],
+    "bullet-blue":       [48, 48, 16, 16],
+    "bullet-purple":     [64, 48, 16, 16]
+}
