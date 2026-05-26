@@ -13,11 +13,14 @@ class Entity(StrEnum):
 
 
 class Comp(StrEnum):
-    PRSA = auto()
-    SPRITE = auto()
+    KILLED = auto()
     MOMENTUM = auto()
     ON_KILL = auto()
-    KILLED = auto()
+    PRSA = auto()
+    RAMP_ALPHA = auto()
+    RAMP_ANGLE = auto()
+    RAMP_SCALE = auto()
+    SPRITE = auto()
 
 
 class Prop(StrEnum):
