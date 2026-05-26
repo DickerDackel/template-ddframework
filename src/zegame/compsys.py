@@ -13,7 +13,8 @@ from zegame.types import EntityID, Vector
 
 class Sprite(NamedTuple):
     atlas: sdl2.Texture
-    rect: pygame.Rect
+    srcrect: pygame.Rect
+    dstrect: pygame.Rect = None
 
 
 def sys_apply_momentum(dt: float, eid: EntityID, prsa: PRSA, momentum: Vector) -> None:
@@ -31,7 +32,7 @@ def sys_apply_mouse(dt: float, eid: EntityID, prsa: PRSA, *, mouse: Vector) -> N
 def sys_bounce(dt: float, eid: EntityID, prsa: PRSA, sprite: Sprite, momentum: Vector, world: pygame.Rect) -> None:
     """Bounce the sprite within the given container."""
 
-    rect = sprite.rect.move_to(center=prsa.pos)
+    rect = sprite.dstrect.move_to(center=prsa.pos)
     if prsa.scale != 1:
         rect.scale_by_ip(prsa.scale)
 
@@ -64,10 +65,14 @@ def sys_draw_sprite(dt: float, eid: EntityID, sprite: Sprite, prsa: PRSA) -> Non
     bkp_alpha = texture.alpha
     texture.alpha = prsa.alpha
 
-    dstrect = sprite.rect.move_to(center=prsa.pos)
+    if sprite.dstrect is None:
+        dstrect = sprite.srcrect.move_to(center=prsa.pos)
+    else:
+        dstrect = sprite.dstrect.move_to(center=prsa.pos)
+
     if prsa.scale != 1:
         dstrect.scale_by_ip(prsa.scale)
 
-    texture.draw(srcrect=sprite.rect, dstrect=dstrect, angle=prsa.rotation)
+    texture.draw(srcrect=sprite.srcrect, dstrect=dstrect, angle=prsa.rotation)
 
     texture.alpha = bkp_alpha
