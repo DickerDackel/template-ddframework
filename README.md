@@ -1,4 +1,4 @@
-# zegame - A game template for ddframework and tinyecs
+# zegame - A game template for ddframework and tinyecs (optional)
 
 tl;dr description here
 
